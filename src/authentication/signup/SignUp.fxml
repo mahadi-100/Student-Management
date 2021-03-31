@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="authentication.signup.SignUpController">
+   <Label text="Create new User">
+      <VBox.margin>
+         <Insets bottom="10.0" />
+      </VBox.margin>
+   </Label>
+   <HBox alignment="CENTER">
+      <VBox.margin>
+         <Insets bottom="50.0" />
+      </VBox.margin>
+      <Label text="Enter admin password  ">
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+      </Label>
+      <PasswordField promptText="password" />
+   </HBox>
+   <HBox alignment="CENTER">
+      <VBox.margin>
+         <Insets bottom="10.0" />
+      </VBox.margin>
+      <Label text="Username  ">
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+      </Label>
+      <TextField promptText="name" />
+   </HBox>
+   <HBox alignment="CENTER">
+      <Label text="Password  " />
+      <PasswordField promptText="password" />
+   </HBox>
+   <Button disable="true" mnemonicParsing="false" text="Submit">
+      <VBox.margin>
+         <Insets top="15.0" />
+      </VBox.margin>
+   </Button>
+</VBox>
