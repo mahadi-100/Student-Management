@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class SignInController{
+public class SignInController {
 
     public TextField idUserName;
     public PasswordField idPassword;
@@ -32,14 +32,13 @@ public class SignInController{
 
         boolean userExist = false;
         String position = "student";
-        while (resultSet.next()){
-            if(username.equals(resultSet.getString("username"))
-                    && password.equals(resultSet.getString("password"))){
+        while (resultSet.next()) {
+            if (username.equals(resultSet.getString("username"))
+                    && password.equals(resultSet.getString("password"))) {
 
-                if(resultSet.getString("position").equals("teacher")){
+                if (resultSet.getString("position").equals("teacher")) {
                     position = "teacher";
-                }
-                else if(resultSet.getString("position").equals("admin")){
+                } else if (resultSet.getString("position").equals("admin")) {
                     position = "admin";
                 }
                 userExist = true;
@@ -51,9 +50,9 @@ public class SignInController{
     }
 
     private void actionUponUsersExistence(boolean userExist, String position) {
-        if(userExist)
+        if (userExist)
             showThePageBasedOnPosition(position);
-        else{
+        else {
             idStatus.setVisible(true);
             idStatus.setTextFill(Color.RED);
             idStatus.setText("User not found");
@@ -61,27 +60,33 @@ public class SignInController{
     }
 
     private void showThePageBasedOnPosition(String position) {
-        if (position.equals("student")){
-            goToStudentPage();
+        switch (position) {
+            case "student":
+                goToSpecificPage("student", "Student.fxml", "Student");
+                break;
+            case "admin":
+                goToSpecificPage("admin", "Admin.fxml", "Admin");
+                break;
+            case "teacher":
+                goToSpecificPage("teacher", "Teacher.fxml", "Teacher");
+                break;
         }
-        else if (position.equals("admin")){
-            goToAdminPage();
-        }
-        else{
-            goToTeacherPage();
-        }
+        Stage stage = (Stage) idStatus.getScene().getWindow();
+        stage.close();
     }
 
-    private void goToTeacherPage() {
-        //todo
-    }
+    private void goToSpecificPage(String packageName, String fxmlFileName, String title) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/pages/" + packageName + "/" + fxmlFileName));
 
-    private void goToAdminPage() {
-        //todo
-    }
+            Stage stage = new Stage();
+            stage.setTitle(title);
+            stage.setScene(new Scene(root));
+            stage.show();
 
-    private void goToStudentPage() {
-        //todo
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void onNewUserClicked() throws IOException {
