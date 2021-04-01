@@ -50,4 +50,9 @@
          <Insets top="5.0" />
       </VBox.margin>
     </HBox>
+   <Label fx:id="idStatus" text="Status" visible="false">
+      <VBox.margin>
+         <Insets left="40.0" />
+      </VBox.margin>
+   </Label>
 </VBox>

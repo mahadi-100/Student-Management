@@ -10,22 +10,11 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="authentication.signup.SignUpController">
-   <Label text="Create new User">
+   <Label text="Create new Account">
       <VBox.margin>
-         <Insets bottom="10.0" />
+         <Insets bottom="20.0" />
       </VBox.margin>
    </Label>
-   <HBox alignment="CENTER">
-      <VBox.margin>
-         <Insets bottom="50.0" />
-      </VBox.margin>
-      <Label text="Enter admin password  ">
-         <HBox.margin>
-            <Insets />
-         </HBox.margin>
-      </Label>
-      <PasswordField fx:id="idAdminPassword" onAction="#onAdminPassClicked" promptText="password" />
-   </HBox>
    <HBox alignment="CENTER">
       <VBox.margin>
          <Insets bottom="10.0" />
@@ -35,11 +24,11 @@
             <Insets />
          </HBox.margin>
       </Label>
-      <TextField fx:id="idUserName" disable="true" promptText="name" />
+      <TextField fx:id="idUserName" promptText="name" />
    </HBox>
    <HBox alignment="CENTER">
       <Label text="Password  " />
-      <PasswordField fx:id="idPassword" disable="true" promptText="password" />
+      <PasswordField fx:id="idPassword" promptText="password" />
    </HBox>
    <HBox alignment="CENTER">
       <VBox.margin>
@@ -53,7 +42,7 @@
          </HBox.margin>
       </RadioButton>
    </HBox>
-   <Button fx:id="idSubmit" disable="true" mnemonicParsing="false" onAction="#onSubmitClicked" text="Submit">
+   <Button fx:id="idSubmit" mnemonicParsing="false" onAction="#onSubmitClicked" text="Submit">
       <VBox.margin>
          <Insets top="20.0" />
       </VBox.margin>
@@ -62,7 +51,11 @@
       <VBox.margin>
          <Insets top="20.0" />
       </VBox.margin>
-      <Label fx:id="idStatus" alignment="CENTER" contentDisplay="CENTER" disable="true" text="status   " />
-      <Button mnemonicParsing="false" onAction="#onCloseClicked" text="close" />
+      <Label fx:id="idStatus" alignment="CENTER" contentDisplay="CENTER" disable="true" text="status   " visible="false" />
+      <Button mnemonicParsing="false" onAction="#onCloseClicked" text="close">
+         <HBox.margin>
+            <Insets right="40.0" />
+         </HBox.margin>
+      </Button>
    </HBox>
 </VBox>
