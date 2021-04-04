@@ -1,6 +1,6 @@
 package authentication.signin;
 
-import database.DatabaseConnection;
+import database.UsersDatabase;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -28,7 +28,7 @@ public class SignInController {
     }
 
     private void checkIfUserAvailable(String username, String password) throws SQLException {
-        ResultSet resultSet = new DatabaseConnection().getResult();
+        ResultSet resultSet = new UsersDatabase().getResult("users");
 
         boolean userExist = false;
         String position = "student";

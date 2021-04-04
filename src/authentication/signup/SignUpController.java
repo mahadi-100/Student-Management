@@ -1,6 +1,6 @@
 package authentication.signup;
 
-import database.DatabaseConnection;
+import database.UsersDatabase;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -28,7 +28,7 @@ public class SignUpController {
     }
 
     private void saveDataToDatabase(String name, String password, String selection) throws SQLException {
-        Statement statement = new DatabaseConnection().getStatement();
+        Statement statement = new UsersDatabase().getStatement();
         String values = "VALUES " + "('" + name + "','" + password + "','" + selection + "')";
 
         String newAccountStatement = "INSERT INTO users "
