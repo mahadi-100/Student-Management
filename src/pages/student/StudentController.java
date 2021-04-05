@@ -19,12 +19,22 @@ public class StudentController implements Initializable {
     public TableColumn<StudentInfo, String> idPerformance;
     public TableColumn<StudentInfo, String> idAttendance;
 
+    /**
+     * @return arrayList returned as tableViewable arrayList.
+     * @throws SQLException connection failure
+     */
     public ObservableList<StudentInfo> getStudentList() throws SQLException {
         StudentRecords records = new StudentRecords();
 
         return FXCollections.observableArrayList(records.getList());
     }
 
+    /**
+     * show all the list items in table format.
+     *
+     * @param location no uses particularly
+     * @param resources no uses either
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         idName.setCellValueFactory(new PropertyValueFactory<>("name"));

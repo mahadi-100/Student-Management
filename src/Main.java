@@ -10,6 +10,13 @@ public class Main extends Application {
       launch(args);
     }
 
+    /**
+     * program execution starts here and SignIn.fxml invoked
+     * to complete the sign in process.
+     *
+     * @param primaryStage layout of the main starting page
+     * @throws Exception can't load the layout properly
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/authentication/signin/SignIn.fxml"));

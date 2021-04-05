@@ -20,6 +20,12 @@ public class SignInController {
     public PasswordField idPassword;
     public Label idStatus;
 
+    /**
+     * get name and password input from the user and send them
+     * to another method for checking if user exist in database.
+     *
+     * @throws SQLException if database connection fail
+     */
     public void onEnterClicked() throws SQLException {
         String userName = idUserName.getText();
         String passWord = idPassword.getText();
@@ -27,6 +33,14 @@ public class SignInController {
         checkIfUserAvailable(userName, passWord);
     }
 
+    /**
+     * use username and password to traverse through the database looking for
+     * the user.if user exist then take action by calling another method.
+     *
+     * @param username is the name user gave
+     * @param password is the password user gave
+     * @throws SQLException database connection failure
+     */
     private void checkIfUserAvailable(String username, String password) throws SQLException {
         ResultSet resultSet = new UsersDatabase().getResult("users");
 
@@ -49,6 +63,13 @@ public class SignInController {
         actionUponUsersExistence(userExist, position);
     }
 
+    /**
+     * upon user's existence and user's position specific page will be shown and if no
+     * user exist then just no user found will be shown as output.
+     *
+     * @param userExist the existence of the user true or false
+     * @param position is the position of the user if he is teacher/admin/student
+     */
     private void actionUponUsersExistence(boolean userExist, String position) {
         if (userExist)
             showThePageBasedOnPosition(position);
@@ -59,6 +80,12 @@ public class SignInController {
         }
     }
 
+    /**
+     * position decides will fxml file will name and which title
+     * will be sent to the goToSpecificPage method.
+     *
+     * @param position defines if user(teacher/student/admin)
+     */
     private void showThePageBasedOnPosition(String position) {
         switch (position) {
             case "student":
@@ -75,6 +102,14 @@ public class SignInController {
         stage.close();
     }
 
+    /**
+     * based on user positions different fxmlFile being called and
+     * different pages will be shown.
+     *
+     * @param packageName is the package name where fxml files are located
+     * @param fxmlFileName name of the fxml files those been called
+     * @param title title of the stage.
+     */
     private void goToSpecificPage(String packageName, String fxmlFileName, String title) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/pages/" + packageName + "/" + fxmlFileName));
@@ -89,6 +124,12 @@ public class SignInController {
         }
     }
 
+    /**
+     * clicking new user button invoke the signUp.fxml file and show
+     * the contents that signUp.fxml contains.
+     *
+     * @throws IOException fxml file can't load properly
+     */
     public void onNewUserClicked() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/authentication/signup/SignUp.fxml"));
 
