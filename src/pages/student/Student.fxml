@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="pages.student.StudentController"
-            prefHeight="400.0" prefWidth="600.0">
 
-</AnchorPane>
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pages.student.StudentController">
+    <TableView fx:id="idTable" prefHeight="400.0" prefWidth="500.0">
+      <columns>
+          <TableColumn fx:id="idName" prefWidth="75.0" text="Name"/>
+          <TableColumn fx:id="id_Id" prefWidth="100.0" text="ID"/>
+          <TableColumn fx:id="idPerformance" prefWidth="75.0" text="Performance"/>
+          <TableColumn fx:id="idAttendance" prefWidth="75.0" text="Attendance"/>
+      </columns>
+        <columnResizePolicy>
+          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+        </columnResizePolicy>
+    </TableView>
+</VBox>

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class StudentRecords {
-    private static final ArrayList<StudentInfo> studentList = new ArrayList<>();
+    private final ArrayList<StudentInfo> studentList = new ArrayList<>();
 
     public StudentRecords() throws SQLException {
         ResultSet result = new StudentDatabase().getResult("student_records");
@@ -20,7 +20,7 @@ public class StudentRecords {
         }
     }
 
-    public ArrayList<StudentInfo> getStudentList() {
+    public ArrayList<StudentInfo> getList() {
         return studentList;
     }
 }
