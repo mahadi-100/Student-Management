@@ -4519,17 +4519,29 @@ SELECT|sys.sys_config
       <Position>5</Position>
       <DataType>varchar(20)|0s</DataType>
     </column>
-    <column id="1104" parent="363" name="username">
+    <column id="1104" parent="363" name="firstName">
       <Position>1</Position>
       <DataType>varchar(20)|0s</DataType>
     </column>
-    <column id="1105" parent="363" name="password">
+    <column id="1105" parent="363" name="lastName">
       <Position>2</Position>
-      <DataType>varchar(10)|0s</DataType>
+      <DataType>varchar(20)|0s</DataType>
     </column>
-    <column id="1106" parent="363" name="position">
+    <column id="1106" parent="363" name="birthDate">
       <Position>3</Position>
-      <DataType>varchar(10)|0s</DataType>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <column id="1107" parent="363" name="username">
+      <Position>4</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <column id="1108" parent="363" name="password">
+      <Position>5</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <column id="1109" parent="363" name="selection">
+      <Position>6</Position>
+      <DataType>varchar(20)|0s</DataType>
     </column>
   </database-model>
 </dataSource>

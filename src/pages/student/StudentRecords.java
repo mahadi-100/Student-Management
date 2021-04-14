@@ -10,7 +10,7 @@ public class StudentRecords {
     private final ArrayList<StudentInfo> studentList = new ArrayList<>();
 
     /**
-     * all data of student been saved from the database.
+     * all data of student been saved from the database to the arraylist.
      *
      * @throws SQLException connection failure
      */
@@ -26,7 +26,8 @@ public class StudentRecords {
     }
 
     /**
-     * calling upon this method any class can access the student record database.
+     * calling upon this method any class can get the arrayList that
+     * contains data from database.
      *
      * @return student records from database in arrayList format.
      */

@@ -19,13 +19,21 @@ public class StudentController implements Initializable {
     public TableColumn<StudentInfo, String> idPerformance;
     public TableColumn<StudentInfo, String> idAttendance;
 
+    private final StudentRecords records;
+
     /**
-     * @return arrayList returned as tableViewable arrayList.
+     * create a object of StudentRecords class
+     * @throws SQLException sql connection failure
+     */
+    public StudentController() throws SQLException {
+        records = new StudentRecords();
+    }
+
+    /**
+     * @return arrayList returned as tableViewable arrayList format.
      * @throws SQLException connection failure
      */
     public ObservableList<StudentInfo> getStudentList() throws SQLException {
-        StudentRecords records = new StudentRecords();
-
         return FXCollections.observableArrayList(records.getList());
     }
 

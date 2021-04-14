@@ -1,4 +1,0 @@
-#to close current stage
-        Stage stage1 = (Stage) button.getScene().getWindow();
-        stage1.close();
-

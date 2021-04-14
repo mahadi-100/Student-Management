@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class SignInController {
 
@@ -35,7 +36,7 @@ public class SignInController {
 
     /**
      * use username and password to traverse through the database looking for
-     * the user.if user exist then take action by calling another method.
+     * the user.if user exist then take action by calling another method to check user existence.
      *
      * @param username is the name user gave
      * @param password is the password user gave
@@ -50,9 +51,9 @@ public class SignInController {
             if (username.equals(resultSet.getString("username"))
                     && password.equals(resultSet.getString("password"))) {
 
-                if (resultSet.getString("position").equals("teacher")) {
+                if (resultSet.getString("selection").equals("teacher")) {
                     position = "teacher";
-                } else if (resultSet.getString("position").equals("admin")) {
+                } else if (resultSet.getString("selection").equals("admin")) {
                     position = "admin";
                 }
                 userExist = true;
@@ -112,7 +113,7 @@ public class SignInController {
      */
     private void goToSpecificPage(String packageName, String fxmlFileName, String title) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/pages/" + packageName + "/" + fxmlFileName));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/pages/" + packageName + "/" + fxmlFileName)));
 
             Stage stage = new Stage();
             stage.setTitle(title);
@@ -131,7 +132,7 @@ public class SignInController {
      * @throws IOException fxml file can't load properly
      */
     public void onNewUserClicked() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/authentication/signup/SignUp.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/authentication/signup/SignUp.fxml")));
 
         Stage stage = new Stage();
         stage.setTitle("Sign Up");

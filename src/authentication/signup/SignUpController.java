@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 
 public class SignUpController {
     public TextField idUserName;
@@ -14,58 +15,75 @@ public class SignUpController {
     public Button idSubmit;
     public RadioButton idTeacher;
     public Label idStatus;
+    public TextField idFirstName;
+    public TextField idLastName;
+    public DatePicker idBirthDate;
+
+    private LocalDate birthdate;
 
     /**
-     * get user inputs and sent the data to another method.
+     * get user inputs and sent the data to another method to save them in database.
      *
      * @throws SQLException database connection failure
      */
     public void onSubmitClicked() throws SQLException {
-        String name = idUserName.getText();
+        String userName = idUserName.getText();
         String password = idPassword.getText();
         String selection = "student";
+
+        String firstName = idFirstName.getText();
+        String lastName = idLastName.getText();
+        String birthDate = birthdate.toString();
 
         if(idTeacher.isSelected()){
             selection = "teacher";
         }
 
-        saveDataToDatabase(name, password, selection);
+        saveDataToDatabase(firstName, lastName, birthDate,  userName, password, selection);
     }
 
-    /**
-     * user inputs(name, password, position) will be saved to database and
-     * will create new user based on the inputs. user will have limited
-     * access to database using their newly created account.
-     *
-     * @param name is user given name
-     * @param password is user given password
-     * @param selection is user's selection if he is teacher/ student
-     * @throws SQLException connection issue
-     */
-    private void saveDataToDatabase(String name, String password, String selection) throws SQLException {
-        Statement statement = new UsersDatabase().getStatement();
-        String values = "VALUES " + "('" + name + "','" + password + "','" + selection + "')";
 
-        String newAccountStatement = "INSERT INTO users "
-                + " (username, password, position)" + values;
+    /**
+     * all six parameters add to the database.
+     *
+     * @param firstName first name of the new user
+     * @param lastName last name of the user
+     * @param birthDate birthDate of the user
+     * @param userName unique name entered by user
+     * @param password user given password.
+     * @param selection position of the user (student/teacher)
+     * @throws SQLException fail to connect with database
+     */
+    private void saveDataToDatabase(String firstName, String lastName, String birthDate,
+                                    String userName, String password, String selection) throws SQLException {
+
+        Statement statement = new UsersDatabase().getStatement();
+        String values = "VALUES " + "('" + firstName + "','" + lastName + "','" + birthDate + "','"
+                        + userName + "','" + password + "','" + selection + "')";
+
+        String newAccountStatement = "INSERT INTO users " + " (firstName, lastName, birthDate, userName, password, selection)"
+                                        + values;
 
         statement.executeUpdate(newAccountStatement);
 
         changeAllControls();
     }
 
+
     /**
-     * to prevent user from spamming and creating multiple accounts
+     * to prevent user from spamming and creating multiple accounts at the same time
      * all buttons and input fields will be closed and no input
      * will be taken.
      */
     private void changeAllControls() {
         idUserName.setDisable(true);
         idPassword.setDisable(true);
+        idFirstName.setDisable(true);
+        idLastName.setDisable(true);
         idSubmit.setDisable(true);
         idStatus.setVisible(true);
         idStatus.setText("Account created  ");
-        idStatus.setTextFill(Color.GREEN);
+        idStatus.setTextFill(Color.DARKBLUE);
     }
 
     /**
@@ -74,5 +92,12 @@ public class SignUpController {
     public void onCloseClicked() {
         Stage stage = (Stage) idSubmit.getScene().getWindow();
         stage.close();
+    }
+
+    /**
+     * get the birth date from the user and save it to birthday variable.
+     */
+    public void onDateClicked() {
+        birthdate = idBirthDate.getValue();
     }
 }
