@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="pages.admin.AdminController">
-   <Button layoutX="14.0" layoutY="107.0" mnemonicParsing="false" onAction="#onSearchClicked" text="Search"/>
-   <Button layoutX="14.0" layoutY="157.0" mnemonicParsing="false" onAction="#noModifyClicked" text="Modify"/>
-   <Button layoutX="15.0" layoutY="212.0" mnemonicParsing="false" onAction="#onDeleteClicked" text="Delete"/>
-   <AnchorPane fx:id="anchorPane" layoutX="76.0" layoutY="-1.0" prefHeight="400.0" prefWidth="524.0"/>
-   <Button layoutX="15.0" layoutY="52.0" mnemonicParsing="false" onAction="#onViewClicked" prefHeight="26.0"
-           prefWidth="50.0" text="View"/>
-</AnchorPane>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pages.admin.AdminController">
+    <HBox prefHeight="400.0" prefWidth="600.0">
+        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="150.0" style="-fx-background-color: aquamarine;">
+            <Button mnemonicParsing="false" onAction="#onAddClicked" text="Add" textFill="#3e0871">
+                <VBox.margin>
+                    <Insets bottom="15.0" left="10.0" top="15.0" />
+                </VBox.margin>
+                <font>
+                    <Font name="System Bold" size="15.0" />
+                </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#onSearchClicked" text="Search" textFill="#3e0871">
+                <VBox.margin>
+                    <Insets bottom="15.0" left="10.0" top="40.0" />
+                </VBox.margin>
+                <font>
+                    <Font name="System Bold" size="15.0" />
+                </font>
+            </Button>
+        </VBox>
+        <VBox fx:id="vBox" prefHeight="200.0" prefWidth="450.0" style="-fx-background-color: antiquewhite;" />
+    </HBox>
+</VBox>

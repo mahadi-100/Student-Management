@@ -1,6 +1,6 @@
 package pages.teacher;
 
-import database.TeacherDatabase;
+import database.UsersDatabase;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,7 +10,7 @@ public class TeacherRecords {
     private final ArrayList<TeacherInfos> teacherList = new ArrayList<>();
 
     public TeacherRecords() throws SQLException {
-        ResultSet result = new TeacherDatabase().getResult("teacher_records");
+        ResultSet result = new UsersDatabase().getResult("teacher_records");
 
         while(result.next()){
             teacherList.add(new TeacherInfos(

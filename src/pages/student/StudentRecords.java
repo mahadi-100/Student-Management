@@ -1,6 +1,6 @@
 package pages.student;
 
-import database.StudentDatabase;
+import database.UsersDatabase;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,7 +15,7 @@ public class StudentRecords {
      * @throws SQLException connection failure
      */
     public StudentRecords() throws SQLException {
-        ResultSet result = new StudentDatabase().getResult("student_records");
+        ResultSet result = new UsersDatabase().getResult("student_records");
 
         while(result.next()){
             studentList.add(new StudentInfo(
